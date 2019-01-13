@@ -28,14 +28,22 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    {{ config('app.name','laravel')}} <!--busca app.name si no encuentra pone el laravel-->
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
+                <!-- Left Side Of Navbar --> 
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    @if(auth()->check())
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <select name="" class="form-control">
+                                <option value="">proyecto A</option>
+                            </select>
+                        </div>
+                    </form>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -77,6 +85,7 @@
     <!-- JavaScripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    @yield('scripts')
 
 </body>
 </html>
